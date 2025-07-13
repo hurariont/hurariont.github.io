@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+
+html, body {
+  font-family: 'Open Sans', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  height: 100%;
+  /*background: #ECF0F3;*/
+  /*background: blueviolet;*/
+  background: #AA076B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #61045F, #AA076B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: linear-gradient(to right, #6b7bd8, #d14b4b);
+
+  
+}
+nav.navbar {
+  font-family: 'Nunito', sans-serif;
+  border-top: 4px solid #088ada; 
+  margin-bottom: 1rem;
+}
+
+a.navbar-item strong {
+  font-size: 2rem;
+}
+
+/*@media screen and (min-width: 1088px) {
+  .navbar-item {
+    margin: 0 auto;
+  }
+}*/
+
+/* Aquí corregimos el margen, ya que tenía un espacio vacío en la derecha */
+/*
+.container {
+  margin: 2.5vh 0.5rem 0 0.5rem;
+}*/
+.columns {
+  height: 100%;
+}
+
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+.card-header {
+  border-bottom: 1px solid #dbdbdb;
+}
+.card-header-title {
+  color: #8F99A3;
+  font-weight: 400;
+}
+
+.card .content {
+  font-size: 11px;
+}
+.card-footer-item {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8F99A3;
+}
+
+/* eliminamos el borde derecho por problemas
+cuando no está el link de eliminar todo */
+#numero-cursos-seleccionados {
+  border: none;
+}
+
+#eliminar-todo-seleccionados {
+  border-left: 1px solid #dbdbdb;
+}
+/*
+.card-footer-item:hover {
+}
+*/
+.card-table .table {
+  margin-bottom: 0;
+}
+.events-card .card-table {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+/* Regla para que el buscador se adapte al tamaño del header */
+.control {
+  width: 90%;
+  margin: 5px auto; /* margin superior e inferior de 5px y auto para centrar horizontalmente. */
+}
+
+div #horario {
+  overflow-x:auto;
+  padding: .4rem;
+}
+
+/* Estilos del horario */
+#tabla-horario {
+  /*table-layout: fixed; Provoca overlaping con el texto*/
+  /*display: block;*/
+  max-width: 100%;
+  /*overflow-x: auto;*/
+  font-size: 14px;
+}
+
+#tabla-horario th, .bloque-horario {
+  text-align: center;
+  color: #8A4D76;
+}
+
+#tabla-horario td.bloque-horario {
+  font-size: .8em;
+  font-weight: 600;
+}
+
+#tabla-horario td {
+  width: calc(100%/7);
+  height: 5em;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.7em;
+}
+
+#tabla-horario td div {
+  margin-bottom: 2.5px;
+}
+
+.cat {
+  border: 1.25px solid #209cee;
+  border-radius: 5px;
+}
+
+.ayu {
+  border: 1.25px solid #ffdd57;
+  border-radius: 5px;
+}
+
+/* Sobreescribimos el estilo por default de bulma para centrar las celdas */
+.content table td {
+  vertical-align: middle;
+}
+
+.button.is-small {
+  font-size: 0.65rem;
+}
+
+.footer {
+  background-color: #fff;
+  padding: 2rem 1.5rem 2rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 1088px) {
+  .container {
+    margin: 0 0.5rem;
+  }
+}
+
+.button.is-danger {
+  background-color: #8A4D76;
+}
+
+.navbar .navbar-brand {
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.navbar .navbar-brand > .navbar-item,
+.navbar .navbar-brand .navbar-link {
+  display: inline-block;
+}
+
+/* Fijamos a la derecha el botón de whatsapp */
+#div-wsp {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+#limpiar-buscador {
+  cursor: pointer;
+  margin: auto 30px auto -40px;
+  z-index: 400;
+  color: hsl(0, 0%, 71%);
+}
+
+#limpiar-buscador:hover {
+  color: #ff3860!important
+}

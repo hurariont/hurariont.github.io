@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNLVHZYWL3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNLVHZYWL3');
+    </script>
+    
+    <!-- Start of Woopra Code -->
+    <script>
+      (function(){
+        var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+      })("woopra");
+
+      woopra.config({
+          domain: 'hurariont.github.io'
+      });
+      woopra.track();
+    </script>
+<!-- End of Woopra Code -->
+    
+    <title>hUrarion't - Simula tu toma de ramos</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bulma Version 0.7.2-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- font awesome v 4.7.0-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!-- font awesome v 5.5.0 -->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">-->
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    
+    <!-- font awesome v 5.9.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+    
+    <!-- html2canvas -->
+    <script async src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  </head>
+  
+  <body onload="handlers.changeMessageStatus()">
+    <!-- START NAV-BAR -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <!-- Logo -->
+        <div class="navbar-item">
+          <img src="hurariontlogo.png" width="150" height="50" alt="hUrariont">
+        </div>
+        
+        <!-- wsp button -->
+        <div class="navbar-item" id="div-wsp">
+          <a class="button is-success is-outlined is-rounded" id="button-wsp" href="#" target="_blank">
+            <span class="icon">
+              <i class="fab fa-whatsapp"></i>
+            </span>
+            <span>Compartir</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- END NAV-BAR -->
+    
+    <div class="container">
+      <!-- START MESSAGE -->
+      <article class="message is-danger" id="mensaje-recordatorio" style="display: none">
+        <div class="message-header">      
+          <p>Importante!</p>
+          <button onclick="this.parentElement.parentElement.style.display = 'none'" class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+          Antes de tomar ramos en la plataforma de <em>Pregrado</em> <strong>verifica</strong> los datos en la <em>Programación de Cursos de Docencia</em>. Recuerda que los ramos están sujetos a cambios y en ciertos momentos pueden existir diferencias entre los datos mostrados aquí con la información oficial.
+        </div>
+      </article>
+      <!-- END MESSAGE -->
+      
+      <div class="columns">
+        
+        <!-- START LEFT SIDE -->
+        <div class="column is-4">
+          <!-- START LISTA CURSOS -->
+            <div class="card events-card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Listado de Cursos
+                    </p>
+
+                    <a onclick="handlers.toggleCursos()" id="toggleCursos" class="card-header-icon" aria-label="ocultar o mostrar cursos">
+                    <span class="icon">
+                      <i class="fas fa-angle-up" aria-hidden="true"></i>
+                    </span>
+                    </a>
+                </header>
+              
+              <!-- START BUSCADOR -->
+              <header class="card-header">
+                <div class="control has-icons-left">
+                  <input class="input is-small" id="buscador" oninput="handlers.filtrarCursos();" onfocus="this.value = this.value;" type="text" placeholder="Busca tu curso por código, nombre o profe..." maxlength="40">
+                  <span class="icon is-medium is-left">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+
+                <span id="limpiar-buscador" class="icon" onclick="handlers.limpiarBuscador();" style=" display: none">
+                  <i class="fa fa-times-circle"></i>
+                </span>
+                
+              </header>
+              <!-- END BUSCADOR -->
+              
+                <div class="card-table">
+                  <!-- div listado de cursos -->
+                    <div class="content" id="listado-cursos"></div>
+                </div>
+              
+                <footer class="card-footer">
+                  <p class="card-footer-item" id="numero-cursos">Cursos totales: 0</p>
+                  <p class="card-footer-item has-text-danger" id="last-updated">Última actualización: <br> 11-07-2025</p>
+                </footer>
+            </div>
+          <!-- END LISTA CURSOS -->
+          
+          <!-- START CURSOS SELECCIONADOS -->
+            <div class="card events-card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Cursos Seleccionados
+                    </p>
+                  
+                      
+                    <p class="card-header-icon" id="descargarHorario" style="display:none">
+                      <a onclick="handlers.descargarHorario()" class="button is-small is-info is-outlined">
+                        <span class="icon">
+                          <i class="fas fa-download"></i>
+                        </span>
+                        <span>Descargar</span>
+                      </a>
+                    </p>
+                  
+                    <a onclick="handlers.toggleSeleccionados()" id="toggleSeleccionados" class="card-header-icon" aria-label="ocultar o mostrar seleccionados">
+                    <span class="icon">
+                    <i class="fas fa-angle-up" aria-hidden="true"></i>
+                    </span>
+                    </a>
+                </header>
+              
+                <div class="card-table">
+                  <!-- div listado de cursos seleccionados -->
+                    <div class="content" id="listado-cursos-seleccionados"></div>
+                </div>
+              
+                <footer class="card-footer">
+                  <p class="card-footer-item" id="numero-cursos-seleccionados">Seleccionados: 0</p>
+                  <a class="card-footer-item has-text-danger" id="eliminar-todo-seleccionados" style="display:none" onclick="listaCursos.deleteAllSeleccionados()">
+                    Eliminar todo 
+                    <span class="icon">
+                      <i class="fas fa-times"></i>
+                    </span>
+                  </a>
+                </footer>
+            </div>  
+          <!-- END CURSOS SELECCIONADOS -->
+          
+        </div>
+        <!-- END LEFT SIDE -->
+        
+        <!-- START RIGHT SIDE -->
+        <div class="column is-8">
+          
+          <article class="message is-link is-small" id="topes-horarios" style="display:none">
+           <div class="message-header">
+              <p>Tienes topes de horario!</p> <i class="far fa-calendar-alt"></i>
+            </div> 
+            <div class="message-body">
+              Recuerda considerar los <strong>topes de horario</strong> a la hora de seleccionar tus cursos para hacer la postulación en la web de docencia, así también como el <strong>orden de preferencia</strong> y la <strong>cantidad de créditos.</strong>
+            </div>
+          </article>      
+                
+          <!-- START HORARIO -->
+          <div class="card events-card">
+            <!-- div del horario -->
+            <div id="horario"></div>
+          </div>
+          <!-- END HORARIO -->            
+        </div>
+        <!-- END RIGHT SIDE -->
+        
+        </div>
+      </div>
+    
+    <!-- START FOOTER -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <i class="far fa-calendar-alt has-text-info"></i>
+          <strong>hUrario</strong> original by <a href="mailto:msuarezm@fen.uchile.cl" target="_blank">msuarezm</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>.
+        </p>
+        <p>
+          Actualizado y modificado por <strong> <a href="mailto:fllanosc@fen.uchile.cl" target="_blank"> fllanosc :b</a></strong> para la comunidad <strong>FEN</strong> U. de Chile.
+        </p>
+      </div>
+    </footer>
+    <!-- END FOOTER -->
+          
+    <script src="main.js"></script>
+  </body>
+</html>
